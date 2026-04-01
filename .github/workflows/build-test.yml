@@ -15,7 +15,7 @@ jobs:
     name: Build and Test
     runs-on: ubuntu-latest
 
-    # Task 05: Set environment variables for testing
+    # Task 5: Set environment variables for testing
     env:
       NODE_ENV: test
       LOG_LEVEL: debug
@@ -27,6 +27,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      # Task 5: Add a step to print these variables to the logs
+      - name: Print environment variables
+        run: |
+          echo "Environment: ${{ env.NODE_ENV }}"
+          echo "LOG_LEVEL: ${{ env.LOG_LEVEL }}"
       
       - name: Setup Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
