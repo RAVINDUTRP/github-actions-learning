@@ -18,6 +18,12 @@ jobs:
       
       - name: Print current time
         run: date
+
+      # Task 6: Add a step to access a secret and print its length
+      - name: Access secret
+        run: echo "Secret length is ${#SECRET_VAL}"
+        env:
+          SECRET_VAL: ${{ secrets.TEST_SECRET }}
       
       - name: Print runner information
         run: |
@@ -28,7 +34,7 @@ jobs:
           echo "Actor: ${{ github.actor }}"
       
       - name: Check out code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       
       - name: List files
         run: ls -la
