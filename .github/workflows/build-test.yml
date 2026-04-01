@@ -14,6 +14,11 @@ jobs:
   build-and-test:
     name: Build and Test
     runs-on: ubuntu-latest
+
+    # Task 05: Set environment variables for testing
+    env:
+      NODE_ENV: test
+      LOG_LEVEL: debug
     
     strategy:
       matrix:
