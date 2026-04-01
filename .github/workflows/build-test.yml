@@ -20,9 +20,10 @@ jobs:
       NODE_ENV: test
       LOG_LEVEL: debug
     
+    # Task 7: Matrix Strategy
     strategy:
       matrix:
-        node-version: [16.x, 18.x]
+        node-version: [16.x, 18.x, 20.x]
     
     steps:
       - name: Checkout code
