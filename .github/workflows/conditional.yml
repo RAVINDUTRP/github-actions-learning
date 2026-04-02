@@ -1,0 +1,27 @@
+name: Conditional Workflow
+
+on:
+  push:
+    branches: [ main, develop ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Always runs
+        run: echo "This step always runs on any branch"
+
+      - name: Show current branch
+        run: echo "Current branch is ${{ github.ref }}"
+
+      - name: Deploy (main only)
+        if: github.ref == 'refs/heads/main'
+        run: echo "Deploying to production"
+
+      - name: Skipped on main
+        if: github.ref != 'refs/heads/main'
+        run: echo "Not on main branch — skipping deploy"
